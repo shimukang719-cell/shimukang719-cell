@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7765d8">
   <title>My Personal Website</title>
 
   <style>
+    /* ---------- Basic settings ---------- */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -18,147 +20,153 @@
 
     body {
       min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      color: white;
-      overflow-x: hidden;
-
-      /* Animated rainbow background */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Arial, sans-serif;
+      color: #ffffff;
       background: linear-gradient(
-        -45deg,
-        #ff005d,
-        #ff7a00,
-        #ffe600,
-        #00e676,
-        #00d9ff,
-        #3155ff,
-        #a100ff,
-        #ff00c8,
-        #ff005d
+        120deg,
+        #ff9a9e,
+        #fad0c4,
+        #fbc2eb,
+        #a6c1ee,
+        #84fab0,
+        #8fd3f4
       );
-
-      background-size: 600% 600%;
-      animation: rainbow 12s ease infinite;
+      background-size: 400% 400%;
+      animation: rainbow 18s ease infinite;
+      overflow-x: hidden;
+      padding: 30px 18px;
     }
 
     @keyframes rainbow {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    /* Floating colourful light effects */
+    /* ---------- Floating background lights ---------- */
     .orb {
       position: fixed;
       border-radius: 50%;
-      filter: blur(3px);
-      opacity: 0.35;
+      filter: blur(2px);
+      opacity: 0.25;
       pointer-events: none;
       z-index: 0;
-      animation: float 9s ease-in-out infinite alternate;
+      animation: float 12s ease-in-out infinite alternate;
     }
 
     .orb-one {
-      width: 220px;
-      height: 220px;
-      background: #ff00c8;
+      width: 180px;
+      height: 180px;
+      background: #ffffff;
       top: 8%;
-      left: -60px;
+      left: -50px;
     }
 
     .orb-two {
-      width: 180px;
-      height: 180px;
-      background: #00ffff;
-      right: -40px;
-      top: 45%;
-      animation-delay: -3s;
+      width: 240px;
+      height: 240px;
+      background: #b7a4ff;
+      right: -70px;
+      bottom: 8%;
+      animation-delay: -4s;
     }
 
     .orb-three {
-      width: 140px;
-      height: 140px;
-      background: #fff000;
-      bottom: 4%;
-      left: 35%;
-      animation-delay: -5s;
+      width: 110px;
+      height: 110px;
+      background: #fff1a8;
+      top: 55%;
+      left: 12%;
+      animation-delay: -7s;
     }
 
     @keyframes float {
       from {
-        transform: translate(0, 0);
+        transform: translateY(-15px) translateX(0);
       }
       to {
-        transform: translate(35px, -45px);
+        transform: translateY(25px) translateX(20px);
       }
     }
 
-    /* Navigation bar */
-    nav {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      padding: 22px 7%;
-      background: rgba(20, 10, 45, 0.2);
-      backdrop-filter: blur(12px);
-    }
-
-    .logo {
-      font-size: 23px;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    .nav-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    button,
-    .school-link {
-      display: inline-block;
-      border: 1px solid rgba(255, 255, 255, 0.75);
-      border-radius: 30px;
-      padding: 11px 20px;
-      color: white;
-      background: rgba(255, 255, 255, 0.13);
-      font-size: 15px;
-      font-weight: bold;
-      text-decoration: none;
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
-
-    button:hover,
-    .school-link:hover {
-      background: white;
-      color: #6b20b8;
-      transform: translateY(-3px);
-      box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
-    }
-
-    /* Main content */
-    main {
+    /* ---------- Main layout ---------- */
+    .site-wrapper {
       position: relative;
       z-index: 1;
-      width: min(1000px, 90%);
+      width: 100%;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 55px 0;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      text-shadow: 0 3px 15px rgba(50, 35, 80, 0.15);
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.95);
+      text-shadow: 0 1px 5px rgba(40, 30, 60, 0.15);
+    }
+
+    /* ---------- Navigation ---------- */
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    nav button {
+      padding: 12px 25px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: background 0.25s, transform 0.25s;
+    }
+
+    nav button:hover,
+    nav button.active {
+      background: rgba(255, 255, 255, 0.42);
+      transform: translateY(-2px);
+    }
+
+    nav button:focus-visible,
+    .school-button:focus-visible {
+      outline: 3px solid #ffffff;
+      outline-offset: 4px;
+    }
+
+    /* ---------- Glass card ---------- */
+    .glass-card {
+      padding: clamp(22px, 5vw, 45px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: 26px;
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 12px 40px rgba(65, 45, 100, 0.12);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
     }
 
     .page {
       display: none;
-      animation: appear 0.6s ease;
+      animation: appear 0.4s ease;
     }
 
     .page.active {
@@ -168,7 +176,7 @@
     @keyframes appear {
       from {
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateY(8px);
       }
       to {
         opacity: 1;
@@ -176,137 +184,136 @@
       }
     }
 
-    .glass-card {
-      padding: clamp(24px, 5vw, 55px);
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      border-radius: 28px;
-      background: rgba(25, 15, 55, 0.22);
-      backdrop-filter: blur(15px);
-      box-shadow: 0 15px 45px rgba(30, 0, 50, 0.15);
-    }
-
-    .eyebrow {
-      margin-bottom: 18px;
-      font-size: 14px;
-      font-weight: bold;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin-bottom: 22px;
-      font-size: clamp(38px, 7vw, 72px);
-      line-height: 1.1;
-      overflow-wrap: anywhere;
-    }
-
     h2 {
-      margin-bottom: 22px;
-      font-size: clamp(30px, 5vw, 46px);
+      margin-bottom: 18px;
+      font-size: clamp(1.7rem, 4vw, 2.4rem);
+      color: #ffffff;
     }
 
     h3 {
-      margin: 28px 0 12px;
-      font-size: 22px;
+      margin: 24px 0 10px;
+      font-size: 1.25rem;
+      color: #ffffff;
     }
 
     p {
-      margin-bottom: 18px;
-      font-size: 17px;
+      margin-bottom: 16px;
       line-height: 1.8;
+      color: rgba(255, 255, 255, 0.97);
     }
 
-    .subtitle {
-      max-width: 650px;
-      font-size: 19px;
+    /* ---------- Home page ---------- */
+    .welcome {
+      font-size: clamp(1.1rem, 3vw, 1.35rem);
     }
 
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 13px;
-      margin-top: 28px;
-    }
-
-    .section-line {
-      height: 1px;
-      margin: 28px 0;
-      background: rgba(255, 255, 255, 0.4);
-    }
-
-    .info-list {
-      padding-left: 22px;
-    }
-
-    .info-list li {
-      margin-bottom: 12px;
-      font-size: 16px;
-      line-height: 1.7;
-    }
-
-    /* Live clock */
-    .clock-card {
+    .clock-label {
       margin-top: 25px;
-      padding: 22px;
-      text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      border-radius: 20px;
-      background: rgba(20, 10, 45, 0.2);
-      backdrop-filter: blur(12px);
+      margin-bottom: 6px;
+      font-size: 0.95rem;
     }
 
     #clock {
-      margin-top: 8px;
-      font-size: clamp(27px, 5vw, 42px);
-      font-weight: bold;
+      font-size: clamp(1.8rem, 5vw, 2.7rem);
+      font-weight: 700;
+      letter-spacing: 1px;
       font-variant-numeric: tabular-nums;
     }
 
     #date {
-      margin-top: 8px;
-      font-size: 15px;
+      margin-top: 6px;
+      margin-bottom: 0;
+      font-size: 1rem;
     }
 
-    footer {
-      position: relative;
-      z-index: 1;
-      padding: 25px 15px;
+    /* ---------- Natural personal photo ---------- */
+    .photo-container {
+      width: min(100%, 360px);
+      margin: 24px auto 30px;
+    }
+
+    .profile-photo {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(40, 30, 60, 0.16);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .photo-caption {
+      margin: 10px 0 0;
       text-align: center;
-      background: rgba(20, 10, 45, 0.15);
+      font-size: 0.88rem;
+      opacity: 0.9;
     }
 
-    footer p {
-      margin: 0;
-      font-size: 14px;
+    /* ---------- Information sections ---------- */
+    .info-item {
+      margin-top: 16px;
+      padding: 17px 19px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.12);
     }
 
+    .info-item h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    .info-item p {
+      margin-bottom: 0;
+    }
+
+    /* ---------- School button ---------- */
+    .school-button {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 13px 22px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #6554a4;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.25s, background 0.25s;
+    }
+
+    .school-button:hover {
+      background: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    /* ---------- Mobile layout ---------- */
     @media (max-width: 600px) {
-      nav {
-        padding: 18px 5%;
-      }
-
-      .logo {
-        font-size: 20px;
-      }
-
-      .nav-buttons {
-        width: 100%;
-      }
-
-      .nav-buttons button {
-        flex: 1;
-        padding: 10px 12px;
-      }
-
-      main {
-        padding: 30px 0;
+      body {
+        padding: 22px 12px;
       }
 
       .glass-card {
-        border-radius: 22px;
+        border-radius: 20px;
+      }
+
+      .photo-container {
+        width: min(100%, 320px);
+      }
+
+      nav button {
+        padding: 10px 20px;
       }
     }
 
+    /* Respect reduced-motion preferences */
     @media (prefers-reduced-motion: reduce) {
       *,
       *::before,
@@ -314,197 +321,204 @@
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
 </head>
 
 <body>
-
-  <!-- Floating light effects -->
   <div class="orb orb-one"></div>
   <div class="orb orb-two"></div>
   <div class="orb orb-three"></div>
 
-  <!-- Navigation -->
-  <nav>
-    <div class="logo">My Website</div>
+  <div class="site-wrapper">
+    <header>
+      <h1>My Personal Website</h1>
+      <p class="subtitle">Welcome to my little corner of the internet.</p>
+    </header>
 
-    <div class="nav-buttons">
-      <button type="button" onclick="showPage('home')">
+    <nav aria-label="Main navigation">
+      <button
+        type="button"
+        class="active"
+        data-page="home"
+        aria-controls="home"
+        aria-pressed="true"
+      >
         Home
       </button>
 
-      <button type="button" onclick="showPage('about')">
+      <button
+        type="button"
+        data-page="about"
+        aria-controls="about"
+        aria-pressed="false"
+      >
         About Me
       </button>
-    </div>
-  </nav>
+    </nav>
 
-  <main>
+    <main class="glass-card">
+      <!-- HOME PAGE -->
+      <section id="home" class="page active">
+        <h2>Welcome!</h2>
 
-    <!-- Home page -->
-    <section id="home" class="page active">
-      <div class="glass-card">
-        <p class="eyebrow">Welcome to My Website</p>
-
-        <h1>Hello, World!</h1>
-
-        <p class="subtitle">
-          Welcome to my personal website. This is a place where
-          I can introduce myself, share my interests, and show
-          what I am learning.
+        <p class="welcome">
+          Hello! Thank you for visiting my personal website.
+          This is a place where I can share my interests,
+          experiences and things I enjoy learning about.
         </p>
 
-        <div class="button-row">
-          <button type="button" onclick="showPage('about')">
-            Discover More
-          </button>
+        <p>
+          Explore the About Me page to learn more about me.
+        </p>
 
-          <a
-            class="school-link"
-            href="https://www.oconnellschool.ie/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Visit My School
-          </a>
-        </div>
-      </div>
+        <div class="clock-label">Current time in Dublin</div>
+        <div id="clock" aria-live="off">--:--:--</div>
+        <p id="date"></p>
+      </section>
 
-      <div class="clock-card">
-        <p class="eyebrow">Current Time</p>
-        <div id="clock">00:00:00</div>
-        <div id="date">Loading date...</div>
-      </div>
-    </section>
-
-    <!-- About Me page -->
-    <section id="about" class="page">
-      <div class="glass-card">
-        <p class="eyebrow">Get to Know Me</p>
-
+      <!-- ABOUT ME PAGE -->
+      <section id="about" class="page" hidden>
         <h2>About Me</h2>
-<img
-  src="my-photo.jpg"
-  alt="My personal photo"
-  width="250"
->
-        <p>
-          Hello! I am a student currently studying in Dublin,
-          Ireland. I moved here from China and I am working
-          on improving my English and learning new things.
-        </p>
 
-        <div class="section-line"></div>
-
-        <h3>My Interests</h3>
-
-        <ul class="info-list">
-          <li>
-            <strong>Geography:</strong>
-            I enjoy learning about countries, places, and the world.
-          </li>
-
-          <li>
-            <strong>Physics:</strong>
-            I like discovering how things work and understanding
-            scientific ideas.
-          </li>
-
-          <li>
-            <strong>Mathematics:</strong>
-            I enjoy logical thinking and solving problems.
-          </li>
-
-          <li>
-            <strong>Football:</strong>
-            I enjoy playing football and improving my skills.
-          </li>
-
-          <li>
-            <strong>Piano:</strong>
-            I have studied piano and achieved Grade 8 certification.
-          </li>
-        </ul>
-
-        <div class="section-line"></div>
-
-        <h3>My Goals</h3>
-
-        <p>
-          My goals are to improve my English, learn more about
-          science, make new friends, and develop my skills.
-          I hope to keep learning and make a positive contribution
-          to society in the future.
-        </p>
-
-        <h3>Learning English</h3>
-
-        <p>
-          I record useful English words and sentences in a folder
-          so that I can remember them and use them in everyday life.
-        </p>
-
-        <div class="button-row">
-          <button type="button" onclick="showPage('home')">
-            Back to Home
-          </button>
-
-          <a
-            class="school-link"
-            href="https://www.oconnellschool.ie/"
-            target="_blank"
-            rel="noopener noreferrer"
+        <!--
+          Put your photo in the same folder as index.html.
+          Change my-photo.jpg to your actual image filename.
+        -->
+        <div class="photo-container">
+          <img
+            class="profile-photo"
+            src="my-photo.jpg"
+            alt="A personal photo of me"
+            loading="lazy"
           >
-            School Website
-          </a>
+          <p class="photo-caption">A little glimpse into my world.</p>
         </div>
-      </div>
-    </section>
 
-  </main>
+        <p>
+          Hello! I am a student currently studying in Dublin, Ireland.
+          I previously studied in China, and I am working hard to improve
+          my English and learn new things.
+        </p>
 
-  <footer>
-    <p>Made with creativity and curiosity.</p>
-  </footer>
+        <div class="info-item">
+          <h3>📚 My Favourite Subjects</h3>
+          <p>
+            I enjoy Geography and Physics because they help me understand
+            the world and think about interesting questions.
+            I also enjoy subjects that involve logic and problem-solving.
+          </p>
+        </div>
+
+        <div class="info-item">
+          <h3>⚽ Football</h3>
+          <p>
+            I enjoy playing football, especially in midfield.
+            I like passing, controlling the tempo of the game
+            and working together with my teammates.
+          </p>
+        </div>
+
+        <div class="info-item">
+          <h3>🎹 Music</h3>
+          <p>
+            I enjoy playing the piano and have achieved Grade 8
+            piano certification.
+          </p>
+        </div>
+
+        <div class="info-item">
+          <h3>🌍 Learning English</h3>
+          <p>
+            I keep a vocabulary notebook to record useful English
+            words and sentences. I want to become more confident
+            when communicating with other people.
+          </p>
+        </div>
+
+        <div class="info-item">
+          <h3>🎯 My Goals</h3>
+          <p>
+            I want to keep learning, develop my skills,
+            meet new people and make a positive contribution to society.
+          </p>
+        </div>
+
+        <h3>My School</h3>
+        <p>
+          You can visit my school's website using the link below.
+        </p>
+
+        <a
+          class="school-button"
+          href="https://www.oconnellschool.ie/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Visit School Website ↗
+        </a>
+      </section>
+    </main>
+
+    <footer>
+      <p>Made with curiosity and creativity.</p>
+    </footer>
+  </div>
 
   <script>
-    // Switch between Home and About Me
+    // ---------- Switch between pages ----------
+    const navButtons = document.querySelectorAll("nav button");
+    const pages = document.querySelectorAll(".page");
+
     function showPage(pageId) {
-      document.querySelectorAll('.page').forEach(function(page) {
-        page.classList.remove('active');
+      pages.forEach((page) => {
+        const isActive = page.id === pageId;
+
+        page.classList.toggle("active", isActive);
+        page.hidden = !isActive;
       });
 
-      const selectedPage = document.getElementById(pageId);
+      navButtons.forEach((button) => {
+        const isActive = button.dataset.page === pageId;
 
-      if (selectedPage) {
-        selectedPage.classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+      });
     }
 
-    // Update the live clock
+    navButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        showPage(button.dataset.page);
+      });
+    });
+
+    // ---------- Live Dublin clock ----------
     function updateClock() {
       const now = new Date();
 
-      document.getElementById('clock').textContent =
-        now.toLocaleTimeString('en-IE', {
+      document.getElementById("clock").textContent =
+        new Intl.DateTimeFormat("en-IE", {
+          timeZone: "Europe/Dublin",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
           hour12: false
-        });
+        }).format(now);
 
-      document.getElementById('date').textContent =
-        now.toLocaleDateString('en-IE', {
-          weekday: 'long',
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        });
+      document.getElementById("date").textContent =
+        new Intl.DateTimeFormat("en-IE", {
+          timeZone: "Europe/Dublin",
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+          year: "numeric"
+        }).format(now);
     }
 
     updateClock();
     setInterval(updateClock, 1000);
   </script>
-
 </body>
 </html>
