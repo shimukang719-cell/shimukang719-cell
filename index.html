@@ -1,295 +1,506 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Digital Space</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Personal Website</title>
 
-<style>
-* { box-sizing: border-box; }
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  color: white;
-  background: linear-gradient(-45deg, #10152a, #263c72, #49316c, #122d49);
-  background-size: 400% 400%;
-  animation: gradient 12s ease infinite;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      overflow-x: hidden;
 
-.orb {
-  position: fixed;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: #8797ff;
-  filter: blur(65px);
-  opacity: .4;
-  pointer-events: none;
-  animation: float 8s ease-in-out infinite alternate;
-}
+      /* Animated rainbow background */
+      background: linear-gradient(
+        -45deg,
+        #ff005d,
+        #ff7a00,
+        #ffe600,
+        #00e676,
+        #00d9ff,
+        #3155ff,
+        #a100ff,
+        #ff00c8,
+        #ff005d
+      );
 
-.one { top: 10%; left: -50px; }
-.two { right: -60px; bottom: 10%; background: #d879ff; }
+      background-size: 600% 600%;
+      animation: rainbow 12s ease infinite;
+    }
 
-@keyframes float {
-  from { transform: translateY(-20px); }
-  to { transform: translateY(50px); }
-}
+    @keyframes rainbow {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
 
-header, main, footer {
-  position: relative;
-  z-index: 1;
-}
+    /* Floating colourful light effects */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(3px);
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+      animation: float 9s ease-in-out infinite alternate;
+    }
 
-header {
-  max-width: 1000px;
-  margin: auto;
-  padding: 25px 22px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+    .orb-one {
+      width: 220px;
+      height: 220px;
+      background: #ff00c8;
+      top: 8%;
+      left: -60px;
+    }
 
-.logo { font-weight: bold; letter-spacing: 2px; }
-.status { color: #a9ffc7; font-size: 13px; }
+    .orb-two {
+      width: 180px;
+      height: 180px;
+      background: #00ffff;
+      right: -40px;
+      top: 45%;
+      animation-delay: -3s;
+    }
 
-main {
-  max-width: 850px;
-  margin: 55px auto;
-  padding: 22px;
-  text-align: center;
-  animation: appear 1s ease both;
-}
+    .orb-three {
+      width: 140px;
+      height: 140px;
+      background: #fff000;
+      bottom: 4%;
+      left: 35%;
+      animation-delay: -5s;
+    }
 
-@keyframes appear {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+    @keyframes float {
+      from {
+        transform: translate(0, 0);
+      }
+      to {
+        transform: translate(35px, -45px);
+      }
+    }
 
-.tag {
-  color: #c1caff;
-  letter-spacing: 4px;
-  font-size: 13px;
-}
+    /* Navigation bar */
+    nav {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 22px 7%;
+      background: rgba(20, 10, 45, 0.2);
+      backdrop-filter: blur(12px);
+    }
 
-h1 {
-  font-size: clamp(42px, 9vw, 72px);
-  margin: 22px 0;
-  background: linear-gradient(90deg, white, #b5c4ff, #f2c3ff);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-}
+    .logo {
+      font-size: 23px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
 
-.subtitle { color: #d7def5; line-height: 1.8; }
+    .nav-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
 
-.card {
-  max-width: 600px;
-  margin: 30px auto;
-  padding: 28px;
-  border: 1px solid #ffffff33;
-  border-radius: 22px;
-  background: #ffffff12;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 15px 50px #00000020;
-  transition: transform .3s, background .3s;
-}
+    button,
+    .school-link {
+      display: inline-block;
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      border-radius: 30px;
+      padding: 11px 20px;
+      color: white;
+      background: rgba(255, 255, 255, 0.13);
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
 
-.card:hover {
-  transform: translateY(-5px);
-  background: #ffffff20;
-}
+    button:hover,
+    .school-link:hover {
+      background: white;
+      color: #6b20b8;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+    }
 
-.button {
-  display: inline-block;
-  margin: 8px 5px;
-  padding: 14px 23px;
-  border: none;
-  border-radius: 50px;
-  background: linear-gradient(90deg, #7187ff, #a17aff);
-  color: white;
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform .25s, box-shadow .25s;
-}
+    /* Main content */
+    main {
+      position: relative;
+      z-index: 1;
+      width: min(1000px, 90%);
+      margin: 0 auto;
+      padding: 55px 0;
+    }
 
-.button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px #8991ff80;
-}
+    .page {
+      display: none;
+      animation: appear 0.6s ease;
+    }
 
-#about { display: none; }
+    .page.active {
+      display: block;
+    }
 
-#about p, #about li {
-  color: #e0e6fa;
-  line-height: 1.9;
-  text-align: left;
-}
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-#about h2 { color: #cbd4ff; }
+    .glass-card {
+      padding: clamp(24px, 5vw, 55px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 28px;
+      background: rgba(25, 15, 55, 0.22);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 15px 45px rgba(30, 0, 50, 0.15);
+    }
 
-.clock {
-  margin-top: 25px;
-  color: #cbd4f3;
-  font-size: 14px;
-}
+    .eyebrow {
+      margin-bottom: 18px;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
 
-footer {
-  padding: 25px;
-  text-align: center;
-  color: #c0c8e5;
-  font-size: 13px;
-}
+    h1 {
+      margin-bottom: 22px;
+      font-size: clamp(38px, 7vw, 72px);
+      line-height: 1.1;
+      overflow-wrap: anywhere;
+    }
 
-@media (max-width: 600px) {
-  main { margin: 30px auto; padding: 15px; }
-  .card { padding: 22px 16px; }
-}
+    h2 {
+      margin-bottom: 22px;
+      font-size: clamp(30px, 5vw, 46px);
+    }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
-  }
-}
-</style>
+    h3 {
+      margin: 28px 0 12px;
+      font-size: 22px;
+    }
+
+    p {
+      margin-bottom: 18px;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .subtitle {
+      max-width: 650px;
+      font-size: 19px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 28px;
+    }
+
+    .section-line {
+      height: 1px;
+      margin: 28px 0;
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .info-list {
+      padding-left: 22px;
+    }
+
+    .info-list li {
+      margin-bottom: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* Live clock */
+    .clock-card {
+      margin-top: 25px;
+      padding: 22px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 20px;
+      background: rgba(20, 10, 45, 0.2);
+      backdrop-filter: blur(12px);
+    }
+
+    #clock {
+      margin-top: 8px;
+      font-size: clamp(27px, 5vw, 42px);
+      font-weight: bold;
+      font-variant-numeric: tabular-nums;
+    }
+
+    #date {
+      margin-top: 8px;
+      font-size: 15px;
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      padding: 25px 15px;
+      text-align: center;
+      background: rgba(20, 10, 45, 0.15);
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        padding: 18px 5%;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .nav-buttons {
+        width: 100%;
+      }
+
+      .nav-buttons button {
+        flex: 1;
+        padding: 10px 12px;
+      }
+
+      main {
+        padding: 30px 0;
+      }
+
+      .glass-card {
+        border-radius: 22px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<div class="orb one"></div>
-<div class="orb two"></div>
 
-<header>
-  <div class="logo">MY SPACE.</div>
-  <div class="status">● WEBSITE ONLINE</div>
-</header>
+  <!-- Floating light effects -->
+  <div class="orb orb-one"></div>
+  <div class="orb orb-two"></div>
+  <div class="orb orb-three"></div>
 
-<main>
-  <section id="home">
-    <div class="tag">WELCOME TO MY WEBSITE</div>
-    <h1>Hello, World!</h1>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">My Website</div>
 
-    <p class="subtitle">
-      Explore new ideas, learn new skills, and create your own future.
-      <br>Welcome to my personal digital space.
-    </p>
+    <div class="nav-buttons">
+      <button type="button" onclick="showPage('home')">
+        Home
+      </button>
 
-    <div class="card">
-      <h2>👋 About Me</h2>
-      <p>Discover my background, interests, and goals.</p>
-      <button class="button" onclick="showAbout()">
-        About Me ↗
+      <button type="button" onclick="showPage('about')">
+        About Me
       </button>
     </div>
+  </nav>
 
-    <div class="card">
-      <h2>🎓 My School</h2>
-      <p>O'Connell Secondary School</p>
-      <p>Visit my school's official website in Dublin, Ireland.</p>
-      <a class="button"
-         href="https://www.oconnellschool.ie/"
-         target="_blank"
-         rel="noopener noreferrer">
-        Visit My School ↗
-      </a>
-    </div>
-  </section>
+  <main>
 
-  <section id="about">
-    <div class="tag">GET TO KNOW ME</div>
-    <h1>About Me</h1>
+    <!-- Home page -->
+    <section id="home" class="page active">
+      <div class="glass-card">
+        <p class="eyebrow">Welcome to My Website</p>
 
-    <div class="card">
-      <p>
-        Hello! My name is Mukang Shi. I was born in China
-        and I now live and study in Dublin, Ireland.
-      </p>
+        <h1>Hello, World!</h1>
 
-      <p>
-        I moved to Ireland because of a change in my mother's
-        work. She brought me here so that I could continue my
-        education and improve my English.
-      </p>
+        <p class="subtitle">
+          Welcome to my personal website. This is a place where
+          I can introduce myself, share my interests, and show
+          what I am learning.
+        </p>
 
-      <h2>My School Life</h2>
-      <p>
-        I am currently a Transition Year student at
-        O'Connell Secondary School. I have met friendly
-        classmates and professional teachers who motivate
-        me to learn and improve every day.
-      </p>
+        <div class="button-row">
+          <button type="button" onclick="showPage('about')">
+            Discover More
+          </button>
 
-      <h2>My Favourite Subjects</h2>
-      <p>
-        My favourite subjects are Geography and Physics.
-        I find them fascinating because they help me understand
-        the world and think logically. I also enjoy Mathematics
-        and solving problems.
-      </p>
+          <a
+            class="school-link"
+            href="https://www.oconnellschool.ie/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Visit My School
+          </a>
+        </div>
+      </div>
 
-      <h2>My Hobbies and Skills</h2>
-      <ul>
-        <li>I enjoy playing the piano and have achieved Grade 8 piano certification.</li>
-        <li>I am interested in science, geography, and logical thinking.</li>
-        <li>I enjoy playing football and working with teammates.</li>
-        <li>I keep a vocabulary notebook to improve my English.</li>
-      </ul>
+      <div class="clock-card">
+        <p class="eyebrow">Current Time</p>
+        <div id="clock">00:00:00</div>
+        <div id="date">Loading date...</div>
+      </div>
+    </section>
 
-      <h2>My Goals</h2>
-      <p>
-        My goal is to keep learning, develop new skills,
-        improve my English, and make a positive contribution
-        to society.
-      </p>
+    <!-- About Me page -->
+    <section id="about" class="page">
+      <div class="glass-card">
+        <p class="eyebrow">Get to Know Me</p>
 
-      <p>
-        I believe that curiosity, hard work, and perseverance
-        can help me grow and achieve my goals.
-      </p>
+        <h2>About Me</h2>
 
-      <button class="button" onclick="showHome()">
-        ← Back to Home
-      </button>
-    </div>
-  </section>
+        <p>
+          Hello! I am a student currently studying in Dublin,
+          Ireland. I moved here from China and I am working
+          on improving my English and learning new things.
+        </p>
 
-  <div class="clock" id="clock">Loading time...</div>
-</main>
+        <div class="section-line"></div>
 
-<footer>
-  © 2026 My Digital Space · Made with HTML, CSS & JavaScript
-</footer>
+        <h3>My Interests</h3>
 
-<script>
-function showAbout() {
-  document.getElementById("home").style.display = "none";
-  document.getElementById("about").style.display = "block";
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
+        <ul class="info-list">
+          <li>
+            <strong>Geography:</strong>
+            I enjoy learning about countries, places, and the world.
+          </li>
 
-function showHome() {
-  document.getElementById("about").style.display = "none";
-  document.getElementById("home").style.display = "block";
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
+          <li>
+            <strong>Physics:</strong>
+            I like discovering how things work and understanding
+            scientific ideas.
+          </li>
 
-function updateClock() {
-  document.getElementById("clock").textContent =
-    "Current time: " + new Date().toLocaleTimeString("en-IE");
-}
+          <li>
+            <strong>Mathematics:</strong>
+            I enjoy logical thinking and solving problems.
+          </li>
 
-updateClock();
-setInterval(updateClock, 1000);
-</script>
+          <li>
+            <strong>Football:</strong>
+            I enjoy playing football and improving my skills.
+          </li>
+
+          <li>
+            <strong>Piano:</strong>
+            I have studied piano and achieved Grade 8 certification.
+          </li>
+        </ul>
+
+        <div class="section-line"></div>
+
+        <h3>My Goals</h3>
+
+        <p>
+          My goals are to improve my English, learn more about
+          science, make new friends, and develop my skills.
+          I hope to keep learning and make a positive contribution
+          to society in the future.
+        </p>
+
+        <h3>Learning English</h3>
+
+        <p>
+          I record useful English words and sentences in a folder
+          so that I can remember them and use them in everyday life.
+        </p>
+
+        <div class="button-row">
+          <button type="button" onclick="showPage('home')">
+            Back to Home
+          </button>
+
+          <a
+            class="school-link"
+            href="https://www.oconnellschool.ie/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            School Website
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Made with creativity and curiosity.</p>
+  </footer>
+
+  <script>
+    // Switch between Home and About Me
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(function(page) {
+        page.classList.remove('active');
+      });
+
+      const selectedPage = document.getElementById(pageId);
+
+      if (selectedPage) {
+        selectedPage.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    // Update the live clock
+    function updateClock() {
+      const now = new Date();
+
+      document.getElementById('clock').textContent =
+        now.toLocaleTimeString('en-IE', {
+          hour12: false
+        });
+
+      document.getElementById('date').textContent =
+        now.toLocaleDateString('en-IE', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+
 </body>
 </html>
